@@ -1,0 +1,14 @@
+# Editor and OS files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Logs and local backups of the database (never commit real dumps)
+*.log
+*.bak
+
+# Local secrets / key material (added by the data-protection phase)
+*.key
+*.pem
+.env
