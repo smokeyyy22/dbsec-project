@@ -14,7 +14,7 @@ S = SELECT, I = INSERT, U = UPDATE, D = DELETE, - = aucun accès.
 
 | departments | S I U D | S I U | S | S | - | S |
 
-| employees | S I U D | S I U | S (vue, sans national\_id) | S (vue, son département, sans national\_id) | S (vue, sa ligne) | S |
+| employees | S I U D | S (sans national\_id) I U | S (vue, sans national\_id) | S (vue, son département, sans national\_id) | S (vue, sa ligne) | S |
 
 | employee\_bank | S I U D | - | S | - | S (vue, sa ligne) | - |
 
@@ -39,4 +39,6 @@ S = SELECT, I = INSERT, U = UPDATE, D = DELETE, - = aucun accès.
 \- national\_id et iban sont masqués dans les vues : seul le DBA y accède.
 
 \- app\_service a le minimum nécessaire pour l'application (principe du moindre privilège).
+
+\- HR peut saisir national\_id à l'embauche mais ne peut pas le relire : seul le DBA y accède en clair.
 
