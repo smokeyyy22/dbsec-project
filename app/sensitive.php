@@ -2,6 +2,7 @@
 require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/crypto.php';
+require_once __DIR__ . '/audit.php';
 
 $user = require_role('dba', 'hr', 'accountant');
 $pdo  = get_pdo();
@@ -12,6 +13,9 @@ $rows = $pdo->query(
      LEFT JOIN employee_bank b ON b.emp_id = e.emp_id
      ORDER BY e.emp_id'
 )->fetchAll();
+audit_event($user['username'], 'READ_SENSITIVE',
+    'employees.national_id, employee_bank.iban', null, true,
+    'viewed ' . count($rows) . ' records as role ' . $user['role']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
