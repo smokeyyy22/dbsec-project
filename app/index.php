@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/db.php';
 
+require_once __DIR__ . '/auth.php';
+$current = require_role('dba', 'hr', 'accountant');
+
 $rows = get_pdo()->query(
     'SELECT e.emp_id, e.first_name, e.last_name, e.email, e.job_title, d.dept_name
      FROM employees e

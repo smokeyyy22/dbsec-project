@@ -79,6 +79,14 @@ Design documents are in `docs/`: `erd.md` and `erd.png` (entity relationship dia
 
 All data is fictional. Passwords are stored as bcrypt hashes (`password_hash`).
 
+### Comptes de base de données (lab uniquement)
+Mêmes noms que les comptes applicatifs, créés par sql/05_roles_users.sql.
+Mots de passe : Db#<nom>2026 (ex. Db#salaoui2026). Compte de service : app_service / Svc#app2026.
+
+### Ordre d'exécution des scripts ajoutés
+mysql.exe -u root < sql/04_views.sql
+mysql.exe -u root < sql/05_roles_users.sql
+
 ## Known initial state (before hardening)
 
 The database `root` user has no password, and the application currently uses it. This is documented as a "before hardening" finding and will be fixed during the hardening phase.
