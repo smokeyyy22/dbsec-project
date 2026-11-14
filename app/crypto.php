@@ -33,3 +33,32 @@ function decrypt_field(string $blob): ?string {
     $plain = openssl_decrypt($ct, 'aes-256-gcm', crypto_key(), OPENSSL_RAW_DATA, $iv, $tag);
     return $plain === false ? null : $plain;
 }
+
+// ---- Role-based masking (applied AFTER decryption) ----
+
+function mask_value(string $v, int $visible = 4): string {
+    $len = strlen($v);
+    if ($len <= $visible) {
+        return str_repeat('*', $len);
+    }
+    return str_repeat('*', $len - $visible) . substr($v, -$visible);
+}
+
+// full = clear text | masked = last 4 characters only | hidden = nothing
+function reveal_field(string $blob, string $role, string $field): string {
+    $policy = [
+        'national_id' => ['hr' => 'full', 'dba' => 'masked'],
+        'iban'        => ['accountant' => 'full', 'employee' => 'full',
+                          'hr' => 'masked', 'dba' => 'masked'],
+    ];
+    $level = $policy[$field][$role] ?? 'hidden';   // deny by default
+
+    if ($level === 'hidden') {
+        return '[restricted]';
+    }
+    $plain = decrypt_field($blob);
+    if ($plain === null) {
+        return '[unavailable]';
+    }
+    return $level === 'full' ? $plain : mask_value($plain);
+}
