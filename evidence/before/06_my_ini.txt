@@ -1,0 +1,22 @@
+43:log_error="mysql_error.log"
+45:# Change here for bind listening
+46:# bind-address="127.0.0.1" 
+47:# bind-address = ::1          # for ipv6
+59:#skip-networking
+60:#skip-federated
+63:# binary logging is required for replication
+64:# log-bin deactivated by default since XAMPP 1.4.11
+65:#log-bin=mysql-bin
+124:# binary logging - not required for slaves, but recommended
+125:#log-bin=mysql-bin
+130:#log-update = /path-to-dedicated-directory/hostname
+137:#skip-innodb
+140:innodb_log_group_home_dir="C:/xampp/mysql/data"
+141:#innodb_log_arch_dir = "C:/xampp/mysql/data"
+145:## Set .._log_file_size to 25 % of buffer pool size
+146:innodb_log_file_size=5M
+147:innodb_log_buffer_size=8M
+148:innodb_flush_log_at_trx_commit=1
+155:#skip-character-set-client-handshake
+157:sql_mode=NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION
+158:log_bin_trust_function_creators=1

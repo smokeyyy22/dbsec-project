@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Date: Sat, 14 Nov 2026 21:36:41 GMT
+Server: Apache/2.4.65 (Win64) OpenSSL/3.5.1 PHP/8.5.12
+Last-Modified: Sat, 14 Nov 2026 07:21:12 GMT
+ETag: "132-6603763b5011d"
+Accept-Ranges: bytes
+Content-Length: 306
+
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/smokeyyy22/dbsec-project.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main

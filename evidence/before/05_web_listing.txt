@@ -1,0 +1,28 @@
+HTTP/1.1 200 OK
+Date: Sat, 14 Nov 2026 21:36:42 GMT
+Server: Apache/2.4.65 (Win64) OpenSSL/3.5.1 PHP/8.5.12
+Content-Length: 2333
+Content-Type: text/html;charset=UTF-8
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /dbsec-project/sql</title>
+ </head>
+ <body>
+<h1>Index of /dbsec-project/sql</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=D">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th><th><a href="?C=D;O=A">Description</a></th></tr>
+   <tr><th colspan="5"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/dbsec-project/">Parent Directory</a>       </td><td>&nbsp;</td><td align="right">  - </td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="01_schema.sql">01_schema.sql</a>          </td><td align="right">2026-11-14 07:21  </td><td align="right">3.0K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="02_test_data.sql">02_test_data.sql</a>       </td><td align="right">2026-11-14 07:21  </td><td align="right">3.2K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="03_seed_users.php">03_seed_users.php</a>      </td><td align="right">2026-11-14 07:21  </td><td align="right">808 </td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="04_views.sql">04_views.sql</a>           </td><td align="right">2026-11-14 17:08  </td><td align="right">1.9K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="05_roles_users.sql">05_roles_users.sql</a>     </td><td align="right">2026-11-14 17:08  </td><td align="right">4.3K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="06_revoke_demo.sql">06_revoke_demo.sql</a>     </td><td align="right">2026-11-14 17:08  </td><td align="right">389 </td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="check.sql">check.sql</a>              </td><td align="right">2026-11-14 07:21  </td><td align="right">301 </td><td>&nbsp;</td></tr>
+   <tr><th colspan="5"><hr></th></tr>
+</table>
+<address>Apache/2.4.65 (Win64) OpenSSL/3.5.1 PHP/8.5.12 Server at localhost Port 80</address>
+</body></html>

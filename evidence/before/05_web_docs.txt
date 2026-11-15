@@ -1,0 +1,30 @@
+HTTP/1.1 200 OK
+Date: Sat, 14 Nov 2026 21:36:42 GMT
+Server: Apache/2.4.65 (Win64) OpenSSL/3.5.1 PHP/8.5.12
+Last-Modified: Sat, 14 Nov 2026 07:21:12 GMT
+ETag: "16b2-6603763b53e68"
+Accept-Ranges: bytes
+Content-Length: 5810
+
+# Security Analysis: Employee and Payroll System
+
+Database: `payroll_db` (MariaDB). Application: PHP with PDO.
+
+## 1. Critical assets
+
+| Asset | Why it is critical |
+|---|---|
+| `app_users` (password hashes, roles) | Compromise gives access to the whole application and its privileges |
+| `employees.national_id` | Identity theft risk, legal exposure |
+| `employee_bank.iban` | Direct financial fraud risk |
+| `salaries`, `payroll` | Confidential pay data, fraud and internal conflict risk |
+| Payroll integrity | A modified payslip means money paid to the wrong amount or person |
+| Database availability | Employees cannot be paid if the system is down or data is lost |
+
+## 2. Data classification
+
+Levels: **Public**, **Internal**, **Confidential**, **Restricted** (highest).
+
+| Table.column | Level | Justification | Data owner |
+|---|---|---|---|
+| departments.* | Internal | Organizational structure, low risk | HR |

@@ -1,0 +1,17 @@
+User	Host	pw
+root	localhost	EMPTY
+root	127.0.0.1	EMPTY
+root	::1	EMPTY
+pma	localhost	EMPTY
+mariadb.sys	localhost	EMPTY
+Database
+information_schema
+mysql
+payroll_db
+performance_schema
+phpmyadmin
+sys
+test
+Grants for root@localhost
+GRANT ALL PRIVILEGES ON *.* TO `root`@`localhost` WITH GRANT OPTION
+GRANT PROXY ON ''@'%' TO 'root'@'localhost' WITH GRANT OPTION
