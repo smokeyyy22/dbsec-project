@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/auth.php';
 require __DIR__ . '/auth_db.php';
+require __DIR__ . '/audit.php';
 
 const MAX_ATTEMPTS  = 5;
 const LOCK_MINUTES  = 15;
@@ -34,9 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!$u) {
                 // Utilisateur inconnu : même coût de calcul, même message
                 password_verify($password, password_hash('dummy', PASSWORD_BCRYPT));
+                log_login_attempt($username, false, 'unknown user');
                 $error = GENERIC_ERROR;
+             
             } elseif (!$u['is_active'] || $u['is_locked']) {
                 $error = GENERIC_ERROR; // on ne teste même pas le mot de passe
+              log_login_attempt($username, false, 'account locked or inactive');
             } elseif (password_verify($password, $u['password_hash'])) {
                 // 3. Succès
                 session_regenerate_id(true); // contre la fixation de session
@@ -46,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['last_activity'] = time();
                 $pdo->prepare('UPDATE app_users SET failed_attempts = 0, locked_until = NULL, last_login = NOW() WHERE user_id = ?')
                     ->execute([$u['user_id']]);
+                log_login_attempt($username, true, 'login ok');
                 header('Location: welcome.php');
                 exit;
             } else {
@@ -56,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     $pdo->prepare('UPDATE app_users SET failed_attempts = failed_attempts + 1 WHERE user_id = ?')
                         ->execute([$u['user_id']]);
-                }
+                }log_login_attempt($username, false, 'wrong password');
                 $error = GENERIC_ERROR;
             }
         } catch (PDOException $e) {
