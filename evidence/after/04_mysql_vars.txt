@@ -1,0 +1,11 @@
+Database
+information_schema
+mysql
+payroll_db
+performance_schema
+phpmyadmin
+sys
+Variable_name	Value
+local_infile	OFF
+Variable_name	Value
+bind_address	127.0.0.1

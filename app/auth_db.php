@@ -1,14 +1,15 @@
 <?php
+require_once __DIR__ . '/config.php';
+
 // Connexion PDO du compte de service (moindre privilège). LAB UNIQUEMENT.
-// Remplace root pour tout ce qui touche à l'authentification.
 function auth_db(): PDO
 {
     static $pdo = null;
     if ($pdo === null) {
         $pdo = new PDO(
-            'mysql:host=127.0.0.1;dbname=payroll_db;charset=utf8mb4',
-            'app_service',
-            'Svc#app2026',
+            'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
+            DB_USER,
+            DB_PASS,
             [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

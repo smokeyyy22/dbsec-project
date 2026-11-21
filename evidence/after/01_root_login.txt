@@ -1,0 +1,6 @@
+## root without password (expected: access denied)
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+
+## root with password (expected: success)
+CURRENT_USER()
+root@localhost

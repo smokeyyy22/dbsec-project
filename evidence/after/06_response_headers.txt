@@ -1,0 +1,14 @@
+HTTP/1.1 302 Found
+Date: Sat, 21 Nov 2026 23:37:31 GMT
+Server: Apache
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'
+Set-Cookie: PHPSESSID=b66223d4ffbec833a1ea8b44762547d0; path=/; HttpOnly; SameSite=Strict
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Location: login.php
+Content-Type: text/html; charset=UTF-8
+

@@ -87,9 +87,24 @@ Mots de passe : Db#<nom>2026 (ex. Db#salaoui2026). Compte de service : app_servi
 mysql.exe -u root < sql/04_views.sql
 mysql.exe -u root < sql/05_roles_users.sql
 
-## Known initial state (before hardening)
+## Hardening (applied)
 
-The database `root` user has no password, and the application currently uses it. This is documented as a "before hardening" finding and will be fixed during the hardening phase.
+The "before" state (empty `root` password, application connected as `root`, MariaDB listening on every interface) is kept in `evidence/before/`. After `sql/14_hardening.sql`:
+
+| Item | After |
+|---|---|
+| MariaDB | `bind-address=127.0.0.1`, `local-infile=0` in `C:\xampp\mysql\bin\my.ini` (restart MySQL) |
+| `root` | Password `Root#lab2026` on `localhost`, `127.0.0.1` and `::1` |
+| `pma` | Password `Pma#lab2026` (phpMyAdmin asks for a login; blank passwords refused) |
+| `test` database and anonymous accounts | Removed |
+| Application | Connects as `app_service` / `Svc#app2026` (`app/config.php`) |
+| Web root of this project | Denied, except `app/` and local-only `vulnerable/` |
+
+Commands that used `mysql -u root` with no password now need `-p` (password `Root#lab2026`). In Git Bash, quote it so `#` is not treated as a comment:
+
+```
+/c/xampp/mysql/bin/mysql.exe -u root -p'Root#lab2026'
+```
 
 ## Team and responsibilities
 

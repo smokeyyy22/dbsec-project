@@ -1,0 +1,26 @@
+User	Host
+alahlou	localhost
+app_service	localhost
+backup_user	localhost
+hberrada	localhost
+kbenali	localhost
+mariadb.sys	localhost
+nbennani	localhost
+otazi	localhost
+pma	localhost
+role_accountant	
+role_app	
+role_dba	
+role_employee	
+role_hr	
+role_manager	
+root	127.0.0.1
+root	::1
+root	localhost
+salaoui	localhost
+ychraibi	localhost
+Grants for app_service@localhost
+GRANT `role_app` TO `app_service`@`localhost`
+GRANT USAGE ON *.* TO `app_service`@`localhost` IDENTIFIED BY PASSWORD <redacted>
+GRANT INSERT ON `payroll_db`.`login_attempts` TO `app_service`@`localhost`
+SET DEFAULT ROLE `role_app` FOR `app_service`@`localhost`
