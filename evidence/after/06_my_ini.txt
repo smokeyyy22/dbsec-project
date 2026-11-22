@@ -1,0 +1,6 @@
+43:log_error="mysql_error.log"
+44:bind-address=127.0.0.1
+45:local-infile=0
+48:bind-address="127.0.0.1"
+49:local-infile=0
+61:#skip-networking

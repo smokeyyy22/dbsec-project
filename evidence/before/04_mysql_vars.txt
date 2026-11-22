@@ -1,0 +1,6 @@
+Variable_name	Value
+bind_address	
+local_infile	ON
+port	3306
+skip_networking	OFF
+sql_mode	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION

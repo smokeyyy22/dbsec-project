@@ -1,0 +1,30 @@
+t	n
+departments	4
+employees	10
+employee_bank	10
+salaries	10
+payroll	10
+app_users	7
+audit_log	6
+login_attempts	8
+total_net
+156600.00
+Table	Checksum
+payroll_db.departments	3275437843
+payroll_db.employees	2134121669
+payroll_db.employee_bank	3743070853
+payroll_db.salaries	1593865375
+payroll_db.payroll	1178411799
+payroll_db.app_users	4201082400
+payroll_db.audit_log	4249207885
+payroll_db.login_attempts	1747275180
+Trigger	Event	Table	Statement	Timing	Created	sql_mode	Definer	character_set_client	collation_connection	Database Collation
+trg_bank_ai	INSERT	employee_bank	BEGIN\n  INSERT INTO audit_log (db_user, app_user, action, resource, record_id, details)\n  VALUES (USER(), @app_user, 'INSERT', 'employee_bank', NEW.emp_id, 'bank details created');\nEND	AFTER	2026-11-15 16:38:10.74	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION	root@localhost	utf8mb4	utf8mb4_general_ci	utf8mb4_unicode_ci
+trg_bank_au	UPDATE	employee_bank	BEGIN\n  INSERT INTO audit_log (db_user, app_user, action, resource, record_id, details)\n  VALUES (USER(), @app_user, 'UPDATE', 'employee_bank', NEW.emp_id,\n    CONCAT_WS(', ',\n      IF(NOT (OLD.iban      <=> NEW.iban),      'iban changed',      NULL),\n      IF(NOT (OLD.bank_name <=> NEW.bank_name), 'bank_name changed', NULL)));\nEND	AFTER	2026-11-15 16:38:10.77	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION	root@localhost	utf8mb4	utf8mb4_general_ci	utf8mb4_unicode_ci
+trg_bank_ad	DELETE	employee_bank	BEGIN\n  INSERT INTO audit_log (db_user, app_user, action, resource, record_id, details)\n  VALUES (USER(), @app_user, 'DELETE', 'employee_bank', OLD.emp_id, 'bank details deleted');\nEND	AFTER	2026-11-15 16:38:10.80	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION	root@localhost	utf8mb4	utf8mb4_general_ci	utf8mb4_unicode_ci
+trg_emp_ai	INSERT	employees	BEGIN\n  INSERT INTO audit_log (db_user, app_user, action, resource, record_id, details)\n  VALUES (USER(), @app_user, 'INSERT', 'employees', NEW.emp_id, 'employee record created');\nEND	AFTER	2026-11-15 16:38:10.88	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION	root@localhost	utf8mb4	utf8mb4_general_ci	utf8mb4_unicode_ci
+trg_emp_au	UPDATE	employees	BEGIN\n  INSERT INTO audit_log (db_user, app_user, action, resource, record_id, details)\n  VALUES (USER(), @app_user, 'UPDATE', 'employees', NEW.emp_id,\n    CONCAT_WS(', ',\n      IF(NOT (OLD.job_title   <=> NEW.job_title),   'job_title changed',   NULL),\n      IF(NOT (OLD.dept_id     <=> NEW.dept_id),     'dept_id changed',     NULL),\n      IF(NOT (OLD.status      <=> NEW.status),      'status changed',      NULL),\n      IF(NOT (OLD.national_id <=> NEW.national_id), 'national_id changed', NULL),\n      IF(NOT (OLD.email       <=> NEW.email),       'email changed',       NULL),\n      IF(NOT (OLD.address     <=> NEW.address),     'address changed',     NULL)));\nEND	AFTER	2026-11-15 16:38:10.91	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION	root@localhost	utf8mb4	utf8mb4_general_ci	utf8mb4_unicode_ci
+trg_emp_ad	DELETE	employees	BEGIN\n  INSERT INTO audit_log (db_user, app_user, action, resource, record_id, details)\n  VALUES (USER(), @app_user, 'DELETE', 'employees', OLD.emp_id, 'employee record deleted');\nEND	AFTER	2026-11-15 16:38:10.95	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION	root@localhost	utf8mb4	utf8mb4_general_ci	utf8mb4_unicode_ci
+trg_sal_ai	INSERT	salaries	BEGIN\n  INSERT INTO audit_log (db_user, app_user, action, resource, record_id, details)\n  VALUES (USER(), @app_user, 'INSERT', 'salaries', NEW.emp_id,\n    CONCAT('new salary ', NEW.base_salary));\nEND	AFTER	2026-11-15 16:38:11.16	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION	root@localhost	utf8mb4	utf8mb4_general_ci	utf8mb4_unicode_ci
+trg_sal_au	UPDATE	salaries	BEGIN\n  INSERT INTO audit_log (db_user, app_user, action, resource, record_id, details)\n  VALUES (USER(), @app_user, 'UPDATE', 'salaries', NEW.emp_id,\n    CONCAT('base_salary ', OLD.base_salary, ' -> ', NEW.base_salary));\nEND	AFTER	2026-11-15 16:38:11.18	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION	root@localhost	utf8mb4	utf8mb4_general_ci	utf8mb4_unicode_ci
+trg_sal_ad	DELETE	salaries	BEGIN\n  INSERT INTO audit_log (db_user, app_user, action, resource, record_id, details)\n  VALUES (USER(), @app_user, 'DELETE', 'salaries', OLD.emp_id,\n    CONCAT('salary deleted ', OLD.base_salary));\nEND	AFTER	2026-11-15 16:38:11.23	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION	root@localhost	utf8mb4	utf8mb4_general_ci	utf8mb4_unicode_ci

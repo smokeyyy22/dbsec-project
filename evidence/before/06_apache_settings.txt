@@ -1,0 +1,3 @@
+48:# ServerTokens
+55:ServerTokens Full
+65:ServerSignature On

@@ -1,0 +1,2 @@
+logged_in_as	VERSION()
+root@localhost	10.11.16-MariaDB

@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Date: Sat, 14 Nov 2026 21:36:45 GMT
+Server: Apache/2.4.65 (Win64) OpenSSL/3.5.1 PHP/8.5.12
+X-Powered-By: PHP/8.5.12
+Set-Cookie: PHPSESSID=aee583d96b941f1c15b6612288504b56; path=/; HttpOnly; SameSite=Strict
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+

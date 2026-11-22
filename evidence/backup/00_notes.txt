@@ -1,0 +1,2 @@
+Drop at 16:35:49 (Sun 15 Nov 2026). Login page showed the generic technical error during the outage (02_app_down.png). Restore from payroll_20261115_1624.sql took 1.249 s.
+Key renamed to data.key.off: sensitive.php showed an uncaught RuntimeException with full paths, stack trace and ciphertext bytes (display_errors on). Key restored afterwards (64 bytes).
